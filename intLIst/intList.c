@@ -21,7 +21,27 @@ typedef struct intList
 
 
 
-// 
+void funcintNodeInit (intNode *pNode)
+{
+    pNode->Value = 0;
+    pNode->Next = NULL;
+}
+
+intNode* funcintNodeCreate (int value)
+{
+
+    intNode *vpNew = (intNode*) malloc (sizeof(intNode));
+    if ( vpNew == NULL )
+    {
+        print ("the allocation has failled !\n");
+        exit (1);
+    }
+
+    funcintNodeInit (vpNew);
+    vpNew->Value = value;
+
+    return vpNew;
+}
 
 
 

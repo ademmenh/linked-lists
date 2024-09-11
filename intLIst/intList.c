@@ -83,6 +83,12 @@ intNode* funcintNodePointer (intList List, int index)
     }
 }
 
+void funcintNodeFree (intNode *pNode)
+{
+    pNode->Next = NULL;
+    pNode->Value = 0;
+    free (pNode);
+}
 
 
 

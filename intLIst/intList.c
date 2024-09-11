@@ -92,10 +92,22 @@ void funcintNodeFree (intNode *pNode)
 
 
 
-void funcintListInit (intList List)
+void funcintListInit (intList *pList)
 {
-    List.H = NULL;
-    List.length = 0;
+    pList->H = NULL;
+    pList->length = 0;
+}
+
+bool funcintListIsEmpty (intList List)
+{
+    if ( List.length==0 )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 

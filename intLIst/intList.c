@@ -92,6 +92,13 @@ void funcintNodeFree (intNode *pNode)
 
 
 
+void funcintListInit (intList List)
+{
+    List.H = NULL;
+    List.length = 0;
+}
+
+
 
 int main ()
 {

@@ -43,7 +43,7 @@ intNode* funcintNodeCreate (int value)
     return vpNew;
 }
 
-intNode* funcintNodePointer (intList List, int index)
+intNode* funcintNodePointerBefore (intList List, int index)
 {
 
     intNode *vpCn;
@@ -57,13 +57,18 @@ intNode* funcintNodePointer (intList List, int index)
             exit (1);
         }
 
-        vpCn = List.H;
+        if ( List.length==-index )
+        {
+            printf ("You should access thorugh the Head of the List !");
+            exit (1);
+        }
 
+        vpCn = List.H;
         for ( viCn=0; viCn<index; viCn++ )
         {
             vpCn = vpCn->Next;
         }
-        return vpCn->Value;
+        return vpCn;
     }
     else
     {
@@ -73,13 +78,18 @@ intNode* funcintNodePointer (intList List, int index)
             exit (1);
         }
 
-        vpCn = List.H;
+        if ( index==0 )
+        {
+            printf ("Must Access the Head of the list !");
+            exit (1);
+        }
 
-        for ( viCn=0; viCn<index; viCn++ )
+        vpCn = List.H;
+        for ( viCn=0; viCn<index-1; viCn++ )
         {
             vpCn = vpCn->Next;
         }
-        return vpCn->Value;
+        return vpCn;
     }
 }
 
@@ -107,6 +117,77 @@ bool funcintListIsEmpty (intList List)
     else
     {
         return false;
+    }
+}
+
+void funcintListInsert ( intList *pList, int index, int value )
+{
+    intNode *vpCn, *vpNew, *vpTemp;
+    int viCn;
+
+    if ( index<0 )
+    {
+        if ( pList->length<index )
+        {
+            printf ("The index is out the range of the List !");
+            exit (1);
+        }
+
+        if ( index==-1 )
+        {
+            vpNew = funcintNodeCreate (pList);
+            pList->H = vpNew;
+        }
+        else
+        {
+            vpCn = pList->H;
+            for ( viCn=0; viCn<index; viCn++ )
+            {
+                vpCn = vpCn->Next;
+            }
+
+            vpNew = funcintNodeCreate (value);
+            vpCn->Next = vpNew;
+        }
+    }
+    else
+    {
+        if ( pList->length<index )
+        {
+            printf ("The index is out the range of the List !");
+            exit (1);
+        }
+
+        if ( pList->length==0 )
+        {
+            vpNew = funcintNodeCreate (pList);
+            pList->H = vpNew;
+        }
+        else
+        {
+            if ( index==0 )
+            {
+                vpTemp = pList->H;
+                vpNew = funcintNodeCreate (pList);
+                
+                pList->H = vpNew;
+                pList->H->Next = vpTemp;
+
+            }
+            else
+            {
+                vpCn = pList->H;
+                for ( viCn=0; viCn<index; viCn++ )
+                {
+                    vpCn = vpCn->Next;
+                }
+                
+                vpTemp = vpCn;
+                vpCn
+                vpNew = funcintNodeCreate (value);
+                vpCn->Next = vpNew;
+            }
+        }
     }
 }
 

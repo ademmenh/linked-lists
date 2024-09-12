@@ -57,14 +57,14 @@ intNode* funcintNodePointerBefore (intList List, int index)
             exit (1);
         }
 
-        if ( List.length==-index )
+        if ( -index==List.length )
         {
             printf ("For the programmer, You have to access through the Head of the list !");
             exit (1);
         }
 
         vpCn = List.H;
-        for ( viCn=0; viCn<index; viCn++ )
+        for ( viCn=0; viCn<List.length+index-1; viCn++ )
         {
             vpCn = vpCn->Next;
         }

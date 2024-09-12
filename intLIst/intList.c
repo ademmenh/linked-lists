@@ -122,32 +122,32 @@ bool funcintListIsEmpty (intList List)
 
 void funcintListInsert ( intList *pList, int index, int value )
 {
-    intNode *vpCn, *vpNew, *vpTemp;
+    intNode *vpCn, *vpNew, *vp, *vpTemp;
     int viCn;
 
     if ( index<0 )
     {
-        if ( pList->length<index )
+        if ( pList->length<-index )
         {
             printf ("The index is out the range of the List !");
             exit (1);
         }
 
-        if ( index==-1 )
+        if ( -index==pList->length )
         {
-            vpNew = funcintNodeCreate (pList);
+            vpTemp = pList->H;
+            vpNew = funcintNodeCreate (value);
+
             pList->H = vpNew;
+            vpNew->Next = vpTemp;
         }
         else
         {
-            vpCn = pList->H;
-            for ( viCn=0; viCn<index; viCn++ )
-            {
-                vpCn = vpCn->Next;
-            }
-
+            vp = funcintNodePointerBefore (*pList);
+            vpTemp = vp->Next;
             vpNew = funcintNodeCreate (value);
-            vpCn->Next = vpNew;
+            vp->Next = vpNew;
+            vpNew->Next = vpTemp;
         }
     }
     else
@@ -158,35 +158,25 @@ void funcintListInsert ( intList *pList, int index, int value )
             exit (1);
         }
 
-        if ( pList->length==0 )
+
+
+        if ( index==0 )
         {
+            vpTemp = pList->H;
             vpNew = funcintNodeCreate (pList);
+                
             pList->H = vpNew;
+            pList->H->Next = vpTemp;
+
         }
         else
         {
-            if ( index==0 )
-            {
-                vpTemp = pList->H;
-                vpNew = funcintNodeCreate (pList);
-                
-                pList->H = vpNew;
-                pList->H->Next = vpTemp;
+            vp = funcintNodePointerBefore (*pList, index);
+            vpTemp = vp->Next;
+            vpNew = funcintNodeCreate (value);
 
-            }
-            else
-            {
-                vpCn = pList->H;
-                for ( viCn=0; viCn<index; viCn++ )
-                {
-                    vpCn = vpCn->Next;
-                }
-                
-                vpTemp = vpCn;
-                vpCn
-                vpNew = funcintNodeCreate (value);
-                vpCn->Next = vpNew;
-            }
+            vp->Next = vpNew;
+            vpNew->Next = vpTemp;
         }
     }
 }

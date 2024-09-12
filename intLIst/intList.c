@@ -59,7 +59,7 @@ intNode* funcintNodePointerBefore (intList List, int index)
 
         if ( List.length==-index )
         {
-            printf ("You should access thorugh the Head of the List !");
+            printf ("For the programmer, You have to access through the Head of the list !");
             exit (1);
         }
 
@@ -80,7 +80,7 @@ intNode* funcintNodePointerBefore (intList List, int index)
 
         if ( index==0 )
         {
-            printf ("Must Access the Head of the list !");
+            printf ("For the programmer, You have to access through the Head of the list !");
             exit (1);
         }
 
@@ -143,7 +143,7 @@ void funcintListInsert ( intList *pList, int index, int value )
         }
         else
         {
-            vp = funcintNodePointerBefore (*pList);
+            vp = funcintNodePointerBefore (*pList, index);
             vpTemp = vp->Next;
             vpNew = funcintNodeCreate (value);
             vp->Next = vpNew;

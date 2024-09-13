@@ -168,8 +168,15 @@ void funcintListInsert (intList *pList, int index, int value)
     }
 }
 
-void funcintListInsertBeging ()
+void funcintListInsertBeging (intList *pList, int value)
+{
+    funcintListInsert (pList, 0, value);
+}
 
+void funcintListInsertEnd (intList *pList, int value)
+{
+    funcintListInset (pList, pList->length-1, value);
+}
 
 
 

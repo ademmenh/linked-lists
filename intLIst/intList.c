@@ -119,7 +119,7 @@ bool funcintListIsEmpty (intList List)
         return false;
     }
 }
-
+/*
 void funcintListInsert (intList *pList, int index, int value)
 {
     intNode *vpCn, *vpNew, *vp, *vpTemp;
@@ -138,7 +138,7 @@ void funcintListInsert (intList *pList, int index, int value)
         }
         else
         {
-            vp = funcintNodePointerBefore (*pList, index);
+            vp = funcintNodePointerBefore (*pList, pList->length+index);
             vpTemp = vp->Next;
             vpNew = funcintNodeCreate (value);
             vp->Next = vpNew;
@@ -151,8 +151,8 @@ void funcintListInsert (intList *pList, int index, int value)
         if ( index==0 )
         {
             vpTemp = pList->H;
-            vpNew = funcintNodeCreate (pList);
-                
+            vpNew = funcintNodeCreate(value);
+            
             pList->H = vpNew;
             vpNew->Next = vpTemp;
         }
@@ -166,8 +166,12 @@ void funcintListInsert (intList *pList, int index, int value)
             vpNew->Next = vpTemp;
         }
     }
-}
 
+
+
+    pList->length++;
+}
+*/
 void funcintListInsertBeging (intList *pList, int value)
 {
     funcintListInsert (pList, 0, value);
@@ -175,7 +179,7 @@ void funcintListInsertBeging (intList *pList, int value)
 
 void funcintListInsertEnd (intList *pList, int value)
 {
-    funcintListInset (pList, pList->length-1, value);
+    funcintListInsert (pList, pList->length, value);
 }
 
 int funcintListat (intList List, int index)
@@ -221,6 +225,7 @@ void funcintListCreateFIFO (intList *pList, int Listsize)
     
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
+        printf ("the current size is: %d.\n", pList->length);
         viInput = funcintInput();
         funcintListInsertEnd (pList, viInput);
     }
@@ -238,7 +243,7 @@ void funcintListCreateLIFO (intList *pList, int Listsize)
     }
 }
 
-void funcintListDisplay ( intList List )
+void funcintListDisplay (intList List)
 {
     intNode *vpCn;
     int viCn;
@@ -267,7 +272,18 @@ void funcintListDisplay ( intList List )
 int main ()
 {
 
-    // 
+    intList vlIntigers;
+    funcintListInit (&vlIntigers);
+
+    printf ("Creating List!\n");
+    funcintListCreateFIFO (&vlIntigers, 5);
+    printf ("\n\n");
+
+
+
+    printf ("Displaying the List !");
+    funcintListDisplay (vlIntigers);
+    printf ("\n\n");
 
 
 

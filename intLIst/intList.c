@@ -184,7 +184,24 @@ int funcintListat (intList List, int index)
     return vp->Next->Value;
 }
 
+int funcintListIndex (intList List, int value)
+{
+    intNode *vpCn;
+    int viCn;
 
+    viCn = 0;
+    vpCn = List.H;
+    while ( vpCn!=NULL )
+    {
+        if ( vpCn->Value==value )
+        {
+            return viCn;
+        }
+        
+        viCn++;
+        vpCn = vpCn->Next;
+    }
+}
 
 
 

@@ -214,11 +214,17 @@ int funcintInput ()
     return viInput;
 }
 
-// void funcintListCreateFIFO (intList *pList, int Listsize)
-// {
-//     int viCn;
-//     while (  )
-// }
+void funcintListCreateFIFO (intList *pList, int Listsize)
+{
+    int viInput;
+    int viCn;
+    
+    for ( viCn=0; viCn<Listsize; viCn++ )
+    {
+        viInput = funcintInput();
+        funcintListInsertEnd (pList, viInput);
+    }
+}
 
 int main ()
 {

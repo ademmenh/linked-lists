@@ -120,18 +120,13 @@ bool funcintListIsEmpty (intList List)
     }
 }
 
-void funcintListInsert ( intList *pList, int index, int value )
+void funcintListInsert (intList *pList, int index, int value)
 {
     intNode *vpCn, *vpNew, *vp, *vpTemp;
     int viCn;
 
     if ( index<0 )
     {
-        if ( pList->length<-index )
-        {
-            printf ("The index is out the range of the List !");
-            exit (1);
-        }
 
         if ( -index==pList->length )
         {
@@ -152,13 +147,6 @@ void funcintListInsert ( intList *pList, int index, int value )
     }
     else
     {
-        if ( pList->length<index )
-        {
-            printf ("The index is out the range of the List !");
-            exit (1);
-        }
-
-
 
         if ( index==0 )
         {
@@ -166,8 +154,7 @@ void funcintListInsert ( intList *pList, int index, int value )
             vpNew = funcintNodeCreate (pList);
                 
             pList->H = vpNew;
-            pList->H->Next = vpTemp;
-
+            vpNew->Next = vpTemp;
         }
         else
         {
@@ -180,6 +167,9 @@ void funcintListInsert ( intList *pList, int index, int value )
         }
     }
 }
+
+void funcintListInsertBeging ()
+
 
 
 

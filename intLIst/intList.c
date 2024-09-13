@@ -238,6 +238,30 @@ void funcintListCreateLIFO (intList *pList, int Listsize)
     }
 }
 
+void funcintListDisplay ( intList List )
+{
+    intNode *vpCn;
+    int viCn;
+
+
+    if ( List.length==0 )
+    {
+        printf ("The List is Empty!");
+        return;
+    }
+
+
+    vpCn = List.H;
+    viCn = 0;
+    while ( vpCn!=NULL )
+    {
+        printf ("The value n %d is: %d.\n", viCn, vpCn->Value);
+        viCn++;
+        vpCn = vpCn->Next;
+    }
+
+}
+
 
 
 int main ()

@@ -178,6 +178,14 @@ void funcintListInsertEnd (intList *pList, int value)
     funcintListInset (pList, pList->length-1, value);
 }
 
+int funcintListat (intList List, int index)
+{
+    intNode *vp = funcintNodePointerBefore(List, index);
+    return vp->Next->Value;
+}
+
+
+
 
 
 int main ()

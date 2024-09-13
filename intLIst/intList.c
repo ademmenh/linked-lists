@@ -226,6 +226,20 @@ void funcintListCreateFIFO (intList *pList, int Listsize)
     }
 }
 
+void funcintListCreateLIFO (intList *pList, int Listsize)
+{
+    int viInput;
+    int viCn;
+
+    for ( viCn=0; viCn<Listsize; viCn++ )
+    {
+        viInput = funcintInput();
+        funcintListInsertBeging (pList, viInput);
+    }
+}
+
+
+
 int main ()
 {
 

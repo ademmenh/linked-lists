@@ -205,6 +205,21 @@ int funcintListIndex (intList List, int value)
 
 
 
+int funcintInput ()
+{
+    int viInput;
+    printf ("Enter your value: ");
+    scanf ("%d", &viInput);
+    
+    return viInput;
+}
+
+// void funcintListCreateFIFO (intList *pList, int Listsize)
+// {
+//     int viCn;
+//     while (  )
+// }
+
 int main ()
 {
 

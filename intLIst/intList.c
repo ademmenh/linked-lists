@@ -51,15 +51,9 @@ intNode* funcintNodePointerBefore (intList List, int index)
 
     if ( index<0 )
     {
-        if ( List.length<-index )
+        if ( List.length<-index+1 )
         {
             printf ("the index is out the range of the List !");
-            exit (1);
-        }
-
-        if ( -index==List.length )
-        {
-            printf ("For the programmer, You have to access through the Head of the list !");
             exit (1);
         }
 
@@ -72,17 +66,12 @@ intNode* funcintNodePointerBefore (intList List, int index)
     }
     else
     {
-        if ( List.length-1<index )
+        if ( index==0 || List.length<index )
         {
             printf ("The index is out the range of the List !");
             exit (1);
         }
 
-        if ( index==0 )
-        {
-            printf ("For the programmer, You have to access through the Head of the list !");
-            exit (1);
-        }
 
         vpCn = List.H;
         for ( viCn=0; viCn<index-1; viCn++ )
@@ -119,7 +108,7 @@ bool funcintListIsEmpty (intList List)
         return false;
     }
 }
-/*
+
 void funcintListInsert (intList *pList, int index, int value)
 {
     intNode *vpCn, *vpNew, *vp, *vpTemp;
@@ -171,7 +160,7 @@ void funcintListInsert (intList *pList, int index, int value)
 
     pList->length++;
 }
-*/
+
 void funcintListInsertBeging (intList *pList, int value)
 {
     funcintListInsert (pList, 0, value);
@@ -225,7 +214,7 @@ void funcintListCreateFIFO (intList *pList, int Listsize)
     
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
-        printf ("the current size is: %d.\n", pList->length);
+        // printf ("the current size is: %d.\n", pList->length);
         viInput = funcintInput();
         funcintListInsertEnd (pList, viInput);
     }
@@ -281,7 +270,7 @@ int main ()
 
 
 
-    printf ("Displaying the List !");
+    printf ("Displaying the List !\n");
     funcintListDisplay (vlIntigers);
     printf ("\n\n");
 

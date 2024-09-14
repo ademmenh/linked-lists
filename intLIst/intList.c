@@ -43,6 +43,31 @@ intNode* funcintNodeCreate (int value)
     return vpNew;
 }
 
+intNode* funcintNodePointer (intList List, int index)
+{
+    if ( index<0 )
+    {
+        printf ("this function do not supports negative indexing !");
+        exit (1);
+    }
+
+    if ( List.length-1<index )
+    {
+        print ("the index is out the scope !");
+        exit (1);
+    }
+
+    intNode *vpCn = List.H;
+    int viCn;
+
+    for ( viCn=0; viCn<index; viCn++ )
+    {
+        vpCn = vpCn->Next;
+    }
+    
+    return vpCn;
+}
+
 intNode* funcintNodePointerBefore (intList List, int index)
 {
 

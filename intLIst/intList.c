@@ -49,37 +49,22 @@ intNode* funcintNodePointerBefore (intList List, int index)
     intNode *vpCn;
     int viCn;
 
-    if ( index<0 )
+    
+
+    if ( index==0 || List.length<index )
     {
-        if ( List.length<-index+1 )
-        {
-            printf ("the index is out the range of the List !");
-            exit (1);
-        }
-
-        vpCn = List.H;
-        for ( viCn=0; viCn<List.length+index-1; viCn++ )
-        {
-            vpCn = vpCn->Next;
-        }
-        return vpCn;
+        printf ("The index is out the range of the List !");
+        exit (1);
     }
-    else
+
+
+    vpCn = List.H;
+    for ( viCn=0; viCn<index-1; viCn++ )
     {
-        if ( index==0 || List.length<index )
-        {
-            printf ("The index is out the range of the List !");
-            exit (1);
-        }
-
-
-        vpCn = List.H;
-        for ( viCn=0; viCn<index-1; viCn++ )
-        {
-            vpCn = vpCn->Next;
-        }
-        return vpCn;
+        vpCn = vpCn->Next;
     }
+    return vpCn;
+
 }
 
 void funcintNodeFree (intNode *pNode)
@@ -117,7 +102,7 @@ void funcintListInsert (intList *pList, int index, int value)
     if ( index<0 )
     {
 
-        if ( -index==pList->length )
+        if ( index==-pList->length-1 )
         {
             vpTemp = pList->H;
             vpNew = funcintNodeCreate (value);
@@ -127,7 +112,7 @@ void funcintListInsert (intList *pList, int index, int value)
         }
         else
         {
-            vp = funcintNodePointerBefore (*pList, pList->length+index);
+            vp = funcintNodePointerBefore (*pList, pList->length+index+1);
             vpTemp = vp->Next;
             vpNew = funcintNodeCreate (value);
             vp->Next = vpNew;
@@ -163,7 +148,7 @@ void funcintListInsert (intList *pList, int index, int value)
 
 void funcintListInsertBeging (intList *pList, int value)
 {
-    funcintListInsert (pList, 0, value);
+    funcintListInsert (pList, -pList->length-1, value);
 }
 
 void funcintListInsertEnd (intList *pList, int value)
@@ -214,7 +199,7 @@ void funcintListCreateFIFO (intList *pList, int Listsize)
     
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
-        // printf ("the current size is: %d.\n", pList->length);
+        printf ("the current size is: %d.\n", pList->length);
         viInput = funcintInput();
         funcintListInsertEnd (pList, viInput);
     }
@@ -227,6 +212,7 @@ void funcintListCreateLIFO (intList *pList, int Listsize)
 
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
+        printf ("the current size is: %d.\n", pList->length);
         viInput = funcintInput();
         funcintListInsertBeging (pList, viInput);
     }
@@ -265,12 +251,12 @@ int main ()
     funcintListInit (&vlIntigers);
 
     printf ("Creating List!\n");
-    funcintListCreateFIFO (&vlIntigers, 5);
+    funcintListCreateLIFO (&vlIntigers, 5);
     printf ("\n\n");
 
 
 
-    printf ("Displaying the List !\n");
+    printf ("Displaying the List:\n");
     funcintListDisplay (vlIntigers);
     printf ("\n\n");
 

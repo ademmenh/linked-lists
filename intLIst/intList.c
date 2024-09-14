@@ -53,7 +53,7 @@ intNode* funcintNodePointer (intList List, int index)
 
     if ( List.length-1<index )
     {
-        print ("the index is out the scope !");
+        printf ("the index is out the scope !");
         exit (1);
     }
 
@@ -183,8 +183,8 @@ void funcintListInsertEnd (intList *pList, int value)
 
 int funcintListat (intList List, int index)
 {
-    intNode *vp = funcintNodePointerBefore(List, index);
-    return vp->Next->Value;
+    intNode *vp = funcintNodePointer(List, index);
+    return vp->Value;
 }
 
 int funcintListIndex (intList List, int value)
@@ -276,7 +276,7 @@ int main ()
     funcintListInit (&vlIntigers);
 
     printf ("Creating List!\n");
-    funcintListCreateLIFO (&vlIntigers, 5);
+    funcintListCreateFIFO (&vlIntigers, 5);
     printf ("\n\n");
 
 
@@ -284,6 +284,16 @@ int main ()
     printf ("Displaying the List:\n");
     funcintListDisplay (vlIntigers);
     printf ("\n\n");
+
+
+
+    printf ("Display at:\n");
+    int viValue;
+    viValue = funcintListat (vlIntigers, 0);
+    printf ("the value 0 is: %d.\n", viValue);
+    viValue = funcintListat (vlIntigers, 1);
+    printf ("the value 1 is: %d.\n", viValue);
+    printf ("\n\n");    
 
 
 

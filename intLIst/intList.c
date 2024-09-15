@@ -228,6 +228,12 @@ int funcintListCount (intList List, int value)
     return viCount;
 }
 
+void funcintListModify (intList *pList, int index, int value)
+{
+    intNode *vp = funcintNodePointer (*pList, index);
+    vp->Value = value;
+}
+
 
 
 int funcintInput ()
@@ -246,7 +252,7 @@ void funcintListCreateFIFO (intList *pList, int Listsize)
     
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
-        printf ("the current size is: %d.\n", pList->length);
+        // printf ("the current size is: %d.\n", pList->length);
         viInput = funcintInput();
         funcintListInsertEnd (pList, viInput);
     }
@@ -259,7 +265,7 @@ void funcintListCreateLIFO (intList *pList, int Listsize)
 
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
-        printf ("the current size is: %d.\n", pList->length);
+        // printf ("the current size is: %d.\n", pList->length);
         viInput = funcintInput();
         funcintListInsertBeging (pList, viInput);
     }
@@ -309,11 +315,17 @@ int main ()
 
 
 
-    printf ("Display the count:\n");
-    int viValue;
-    viValue = funcintListCount (vlIntigers, 0);
-    printf ("the Count of 0 is: %d.\n", viValue);
-    printf ("\n\n");    
+    printf ("Modify:\n");
+    funcintListModify (&vlIntigers, 0, 10);
+    funcintListModify (&vlIntigers, 1, 11);
+    funcintListModify (&vlIntigers, 2, 12);
+    printf ("\n\n");
+
+
+
+    printf ("Displaying the List after modifications:\n");
+    funcintListDisplay (vlIntigers);
+    printf ("\n\n");
 
 
 

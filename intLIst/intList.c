@@ -74,7 +74,15 @@ intNode* funcintNodePointerBefore (intList List, int index)
     intNode *vpCn;
     int viCn;
 
+
+
+    if ( index<0 )
+    {
+        printf ("this function do not supports negative indexing !");
+        exit (1);
+    }
     
+
 
     if ( index==0 || List.length<index )
     {
@@ -88,6 +96,7 @@ intNode* funcintNodePointerBefore (intList List, int index)
     {
         vpCn = vpCn->Next;
     }
+    
     return vpCn;
 
 }
@@ -121,49 +130,26 @@ bool funcintListIsEmpty (intList List)
 
 void funcintListInsert (intList *pList, int index, int value)
 {
-    intNode *vpCn, *vpNew, *vp, *vpTemp;
-    int viCn;
 
-    if ( index<0 )
+    intNode *vp, *vpTemp, *vpNew;
+
+
+    if ( index==0 )
     {
-
-        if ( index==-pList->length-1 )
-        {
-            vpTemp = pList->H;
-            vpNew = funcintNodeCreate (value);
-
-            pList->H = vpNew;
-            vpNew->Next = vpTemp;
-        }
-        else
-        {
-            vp = funcintNodePointerBefore (*pList, pList->length+index+1);
-            vpTemp = vp->Next;
-            vpNew = funcintNodeCreate (value);
-            vp->Next = vpNew;
-            vpNew->Next = vpTemp;
-        }
+        vpTemp = pList->H;
+        vpNew = funcintNodeCreate(value);
+            
+        pList->H = vpNew;
+        vpNew->Next = vpTemp;
     }
     else
     {
+        vp = funcintNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+        vpNew = funcintNodeCreate (value);
 
-        if ( index==0 )
-        {
-            vpTemp = pList->H;
-            vpNew = funcintNodeCreate(value);
-            
-            pList->H = vpNew;
-            vpNew->Next = vpTemp;
-        }
-        else
-        {
-            vp = funcintNodePointerBefore (*pList, index);
-            vpTemp = vp->Next;
-            vpNew = funcintNodeCreate (value);
-
-            vp->Next = vpNew;
-            vpNew->Next = vpTemp;
-        }
+        vp->Next = vpNew;
+        vpNew->Next = vpTemp;
     }
 
 
@@ -173,7 +159,7 @@ void funcintListInsert (intList *pList, int index, int value)
 
 void funcintListInsertBeging (intList *pList, int value)
 {
-    funcintListInsert (pList, -pList->length-1, value);
+    funcintListInsert (pList, 0, value);
 }
 
 void funcintListInsertEnd (intList *pList, int value)
@@ -238,54 +224,28 @@ void funcintListRemove (intList *pList, int index)
 {
     intNode *vp, *vpTemp;
 
-    if ( index<0 )
+    
+        // the case that funcintNodePointerBefore do not handle
+    if ( index==pList->length )
     {
-        if ( index<-pList->length )
-        {
-            printf ("the index is out the range !");
-            exit (1);
-        }
+        printf ("the index is out the range !");
+        exit (1);
+    }
 
-        if ( index==-pList->length )
-        {
-            vpTemp = pList->H;
-            pList->H = pList->H->Next;
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        pList->H = pList->H->Next;
 
-            funcintNodeFree (vpTemp);
-        }
-        else
-        {
-            vp = funcintNodePointerBefore (*pList, pList->length+index); 
-            vpTemp = vp->Next;
-
-            vp->Next = vp->Next->Next;
-            funcintNodeFree (vpTemp);
-        }
+        funcintNodeFree (vpTemp);
     }
     else
     {
-        // the case that funcintNodePointerBefore do not handle
-        if ( index==pList->length )
-        {
-            printf ("the index is out the range !");
-            exit (1);
-        }
+        vp = funcintNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
 
-        if ( index==0 )
-        {
-            vpTemp = pList->H->Next;
-            pList->H = pList->H->Next;
-
-            funcintNodeFree (vpTemp);
-        }
-        else
-        {
-            vp = funcintNodePointerBefore (*pList, index);
-            vpTemp = vp->Next;
-
-            vp->Next = vp->Next->Next;
-            funcintNodeFree (vpTemp);
-        }
+        vp->Next = vp->Next->Next;
+        funcintNodeFree (vpTemp);
     }
 
 
@@ -344,7 +304,7 @@ void funcintListDisplay (intList List)
 
     vpCn = List.H;
     viCn = 0;
-    while ( vpCn!=NULL )
+    while ( vpCn!=NULL && viCn<List.length )
     {
         printf ("The value n %d is: %d.\n", viCn, vpCn->Value);
         viCn++;
@@ -374,11 +334,11 @@ int main ()
 
 
     printf ("Removing:\n");
-    funcintListRemove (&vlIntigers, 2);
+    printf ("before calling remove.\n");
     funcintListRemove (&vlIntigers, 2);
     funcintListRemove (&vlIntigers, 0);
+    printf ("after remove.\n");
     printf ("\n\n");
-
 
 
     printf ("Displaying the List after modifications:\n");

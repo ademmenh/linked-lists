@@ -206,6 +206,28 @@ int funcintListIndex (intList List, int value)
     }
 }
 
+int funcintListCount (intList List, int value)
+{
+    int viCn;
+    int viCount;
+    intNode *vpCn;
+
+    viCn = 0;
+    vpCn = List.H;
+    viCount = 0;
+    for ( viCn=0; viCn<List.length; viCn++ )
+    {
+        if ( vpCn->Value==value )
+        {
+            viCount++;
+        }
+        
+        vpCn = vpCn->Next;
+    }
+    
+    return viCount;
+}
+
 
 
 int funcintInput ()
@@ -287,12 +309,10 @@ int main ()
 
 
 
-    printf ("Display at:\n");
+    printf ("Display the count:\n");
     int viValue;
-    viValue = funcintListat (vlIntigers, 0);
-    printf ("the value 0 is: %d.\n", viValue);
-    viValue = funcintListat (vlIntigers, 1);
-    printf ("the value 1 is: %d.\n", viValue);
+    viValue = funcintListCount (vlIntigers, 0);
+    printf ("the Count of 0 is: %d.\n", viValue);
     printf ("\n\n");    
 
 

@@ -340,6 +340,37 @@ void funcintListSort (intList *pList)
     }
 }
 
+void funcintListSortReversed (intList *pList)
+{
+
+    intNode *vpCn1, *vpCn2, *vpMax;
+    int viMax;
+
+    vpCn1 = pList->H;
+    while ( vpCn1!=NULL )
+    {
+
+        vpMax = vpCn1;
+        viMax = vpCn1->Value;
+        vpCn2 = vpCn1->Next;
+        while ( vpCn2!=NULL )
+        {
+            if ( viMax<vpCn2->Value )
+            {
+                vpMax = vpCn2;
+                viMax = vpCn2->Value;
+            }
+
+            vpCn2 = vpCn2->Next;
+        }
+
+        vpMax->Value = vpCn1->Value;
+        vpCn1->Value = viMax;
+        
+        vpCn1 = vpCn1->Next;
+    }
+}
+
 void funcintListDisplay (intList List)
 {
     intNode *vpCn;
@@ -385,7 +416,7 @@ int main ()
 
 
     printf ("Sorting:\n");
-    funcintListSort (&vlIntigers);
+    funcintListSortReversed (&vlIntigers);
     printf ("\n\n");
 
 

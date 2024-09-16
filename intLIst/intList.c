@@ -265,6 +265,14 @@ void funcintListRemoveEnd (intList *pList)
     funcintListRemove (pList, pList->length-1);
 }
 
+void funcintListClear (intList *pList)
+{
+    while (pList->length>0)
+    {
+        funcintListRemove (pList, 0);
+    }
+}
+
 
 
 int funcintInput ()

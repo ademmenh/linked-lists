@@ -260,6 +260,11 @@ void funcintListRemoveBegin (intList *pList)
     funcintListRemove (pList, 0);
 }
 
+void funcintListRemoveEnd (intList *pList)
+{
+    funcintListRemove (pList, pList->length-1);
+}
+
 
 
 int funcintInput ()

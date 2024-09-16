@@ -225,12 +225,14 @@ void funcintListRemove (intList *pList, int index)
     intNode *vp, *vpTemp;
 
     
-        // the case that funcintNodePointerBefore do not handle
+    // the case that funcintNodePointerBefore do not handle
     if ( index==pList->length )
     {
         printf ("the index is out the range !");
         exit (1);
     }
+
+
 
     if ( index==0 )
     {
@@ -249,7 +251,13 @@ void funcintListRemove (intList *pList, int index)
     }
 
 
+
     pList->length--;
+}
+
+void funcintListRemoveBegin (intList *pList)
+{
+    funcintListRemove (pList, 0);
 }
 
 
@@ -335,8 +343,8 @@ int main ()
 
     printf ("Removing:\n");
     printf ("before calling remove.\n");
-    funcintListRemove (&vlIntigers, 2);
-    funcintListRemove (&vlIntigers, 0);
+    funcintListRemove (&vlIntigers, 5);
+    // funcintListRemove (&vlIntigers, 0);
     printf ("after remove.\n");
     printf ("\n\n");
 

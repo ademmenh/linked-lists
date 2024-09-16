@@ -310,6 +310,36 @@ void funcintListCreateLIFO (intList *pList, int Listsize)
     }
 }
 
+void funcintListSort (intList *pList)
+{
+    intNode *vpCn1, *vpCn2, *vpMin;
+    int viMin;
+
+    vpCn1 = pList->H;
+    while ( vpCn1!=NULL )
+    {
+
+        vpMin = vpCn1;
+        viMin = vpCn1->Value;
+        vpCn2 = vpCn1->Next;
+        while ( vpCn2!=NULL )
+        {
+            if ( vpCn2->Value<viMin )
+            {
+                vpMin = vpCn2;
+                viMin = vpCn2->Value;
+            }
+ 
+            vpCn2 = vpCn2->Next;   
+        }
+
+        vpMin->Value = vpCn1->Value;
+        vpCn1->Value = viMin;
+
+        vpCn1 = vpCn1->Next;
+    }
+}
+
 void funcintListDisplay (intList List)
 {
     intNode *vpCn;
@@ -354,12 +384,10 @@ int main ()
 
 
 
-    printf ("Removing:\n");
-    printf ("before calling remove.\n");
-    funcintListRemove (&vlIntigers, 5);
-    // funcintListRemove (&vlIntigers, 0);
-    printf ("after remove.\n");
+    printf ("Sorting:\n");
+    funcintListSort (&vlIntigers);
     printf ("\n\n");
+
 
 
     printf ("Displaying the List after modifications:\n");

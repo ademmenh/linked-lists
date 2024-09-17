@@ -254,5 +254,21 @@ void funcfloatListRemove (floatList *pList, int index)
     pList->length--;
 }
 
+void funcfloatListRemoveBegin (floatList *pList)
+{
+    funcfloatListRemove (pList, 0);
+}
 
+void funcfloatListRemoveEnd (floatList *pList)
+{
+    funcfloatListRemove (pList, pList->length-1);
+}
+
+void funcfloatListClear (floatList *pList)
+{
+    while (pList->length>0)
+    {
+        funcfloatListRemove (pList, 0);
+    }
+}
 

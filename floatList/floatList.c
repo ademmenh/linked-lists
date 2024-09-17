@@ -219,3 +219,40 @@ void funcfloatListModify (floatList *pList, int index, float value)
     vp->Value = value;
 }
 
+void funcfloatListRemove (floatList *pList, int index)
+{
+    floatNode *vp, *vpTemp;
+
+    
+    // the case that funcintNodePointerBefore do not handle
+    if ( index==pList->length )
+    {
+        printf ("the index is out the range !");
+        exit (1);
+    }
+
+
+
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        pList->H = pList->H->Next;
+
+        funcfloatNodeFree (vpTemp);
+    }
+    else
+    {
+        vp = funcfloatNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+
+        vp->Next = vp->Next->Next;
+        funcfloatNodeFree (vpTemp);
+    }
+
+
+
+    pList->length--;
+}
+
+
+

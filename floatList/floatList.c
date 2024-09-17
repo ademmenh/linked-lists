@@ -100,7 +100,7 @@ floatNode* funcfloatNodePointerBefore (floatList List, int index)
 void funfloatNodeFree (floatNode *pNode)
 {
     pNode->Next = NULL;
-    pNode->Value = 0;
+    pNode->Value = 0.0;
     free (pNode);
 }
 
@@ -111,4 +111,57 @@ void funcfloatListInit (floatList *pList)
     pList->H = NULL;
     pList->length = 0;
 }
+
+bool funcfloatListIsEmpty (floatList List)
+{
+    if ( List.length==0 )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void funcfloatListInsert (floatList *pList, int index, float value)
+{
+
+    floatNode *vp, *vpTemp, *vpNew;
+
+
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        vpNew = funcfloatNodeCreate(value);
+            
+        pList->H = vpNew;
+        vpNew->Next = vpTemp;
+    }
+    else
+    {
+        vp = funcfloatNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+        vpNew = funcfloatNodeCreate (value);
+
+        vp->Next = vpNew;
+        vpNew->Next = vpTemp;
+    }
+
+
+
+    pList->length++;
+}
+
+void funcfloatListInsertBeging (floatList *pList, float value)
+{
+    funcfloatListInsert (pList, 0, value);
+}
+
+void funcfloatListInsertEnd (floatList *pList, float value)
+{
+    funcfloatListInsert (pList, pList->length, value);
+}
+
+
 

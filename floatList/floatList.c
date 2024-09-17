@@ -213,5 +213,9 @@ int funcfloatListCount (floatList List, float value)
     return viCount;
 }
 
-
+void funcfloatListModify (floatList *pList, int index, float value)
+{
+    floatNode *vp = funcfloatNodePointer (*pList, index);
+    vp->Value = value;
+}
 

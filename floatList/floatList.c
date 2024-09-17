@@ -190,3 +190,28 @@ int funcfloatListIndex (floatList List, float value)
     printf ("the value was not found !");
     exit (1);
 }
+
+int funcfloatListCount (floatList List, float value)
+{
+    int viCn;
+    int viCount;
+    floatNode *vpCn;
+
+    viCn = 0;
+    vpCn = List.H;
+    viCount = 0;
+    for ( viCn=0; viCn<List.length; viCn++ )
+    {
+        if ( vpCn->Value==value )
+        {
+            viCount++;
+        }
+        
+        vpCn = vpCn->Next;
+    }
+    
+    return viCount;
+}
+
+
+

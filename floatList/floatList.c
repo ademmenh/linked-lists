@@ -97,3 +97,18 @@ floatNode* funcfloatNodePointerBefore (floatList List, int index)
 
 }
 
+void funfloatNodeFree (floatNode *pNode)
+{
+    pNode->Next = NULL;
+    pNode->Value = 0;
+    free (pNode);
+}
+
+
+
+void funcfloatListInit (floatList *pList)
+{
+    pList->H = NULL;
+    pList->length = 0;
+}
+

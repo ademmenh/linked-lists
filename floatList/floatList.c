@@ -169,4 +169,24 @@ float funcfloatListat (floatList List, int index)
     return vp->Value;
 }
 
+int funcfloatListIndex (floatList List, float value)
+{
+    floatNode *vpCn;
+    int viCn;
 
+    viCn = 0;
+    vpCn = List.H;
+    while ( vpCn!=NULL )
+    {
+        if ( vpCn->Value==value )
+        {
+            return viCn;
+        }
+        
+        viCn++;
+        vpCn = vpCn->Next;
+    }
+
+    printf ("the value was not found !");
+    exit (1);
+}

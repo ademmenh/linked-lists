@@ -190,6 +190,9 @@ int funcintListIndex (intList List, int value)
         viCn++;
         vpCn = vpCn->Next;
     }
+
+    printf ("the index is not found !");
+    exit (1);
 }
 
 int funcintListCount (intList List, int value)

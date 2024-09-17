@@ -163,5 +163,10 @@ void funcfloatListInsertEnd (floatList *pList, float value)
     funcfloatListInsert (pList, pList->length, value);
 }
 
+float funcfloatListat (floatList List, int index)
+{
+    floatNode *vp = funcfloatNodePointer(List, index);
+    return vp->Value;
+}
 
 

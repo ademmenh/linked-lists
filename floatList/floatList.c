@@ -17,7 +17,7 @@ typedef struct floatList
 } floatList;
 
 
-void funcflaotNodeInit (floatNode *pNode)
+void funcfloatNodeInit (floatNode *pNode)
 {
     pNode->Value = 0.0;
     pNode->Next = NULL;
@@ -97,7 +97,7 @@ floatNode* funcfloatNodePointerBefore (floatList List, int index)
 
 }
 
-void funfloatNodeFree (floatNode *pNode)
+void funcfloatNodeFree (floatNode *pNode)
 {
     pNode->Next = NULL;
     pNode->Value = 0.0;

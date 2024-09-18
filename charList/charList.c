@@ -14,3 +14,17 @@ typedef struct charList
     charNode *H;
     int length;
 } charList;
+
+void funccharNodeInit (charNode *pNode)
+{
+    pNode->Value = ' ';
+    pNode->Next = NULL;
+}
+
+void funccharNodeFree (charNode *pNode)
+{
+    pNode->Next = NULL;
+    pNode->Value = ' ';
+    free (pNode);
+}
+

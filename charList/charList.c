@@ -147,5 +147,12 @@ void funccharListInsertEnd (charList *pList, char value)
     funccharListInsert (pList, pList->length, value);
 }
 
+char funccharListat (charList List, int index)
+{
+    charNode *vp = funccharNodePointer(List, index);
+    return vp->Value;
+}
+
+
 
 

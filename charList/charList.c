@@ -108,3 +108,44 @@ bool funccharListIsEmpty (charList List)
     }
 }
 
+void funccharListInsert (charList *pList, int index, char value)
+{
+
+    charNode *vp, *vpTemp, *vpNew;
+
+
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        vpNew = funccharNodeCreate(value);
+            
+        pList->H = vpNew;
+        vpNew->Next = vpTemp;
+    }
+    else
+    {
+        vp = funccharNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+        vpNew = funccharNodeCreate (value);
+
+        vp->Next = vpNew;
+        vpNew->Next = vpTemp;
+    }
+
+
+
+    pList->length++;
+}
+
+void funccharListInsertBeging (charList *pList, char value)
+{
+    funcfloatListInsert (pList, 0, value);
+}
+
+void funccharListInsertEnd (charList *pList, char value)
+{
+    funccharListInsert (pList, pList->length, value);
+}
+
+
+

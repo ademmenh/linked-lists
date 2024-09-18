@@ -175,4 +175,26 @@ int funccharListIndex (charList List, char value)
     exit (1);
 }
 
+int funccharListCount (charList List, char value)
+{
+    int viCn;
+    int viCount;
+    charNode *vpCn;
+
+    viCn = 0;
+    vpCn = List.H;
+    viCount = 0;
+    for ( viCn=0; viCn<List.length; viCn++ )
+    {
+        if ( vpCn->Value==value )
+        {
+            viCount++;
+        }
+        
+        vpCn = vpCn->Next;
+    }
+    
+    return viCount;
+}
+
 

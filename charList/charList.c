@@ -248,5 +248,11 @@ void funccharListRemoveEnd (charList *pList)
     funccharListRemove (pList, pList->length-1);
 }
 
-
+void funccharListClear (charList *pList)
+{
+    while (pList->length>0)
+    {
+        funccharListRemove (pList, 0);
+    }
+}
 

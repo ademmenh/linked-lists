@@ -197,4 +197,11 @@ int funccharListCount (charList List, char value)
     return viCount;
 }
 
+void funccharListModify (charList *pList, int index, char value)
+{
+    charNode *vp = funccharNodePointer (*pList, index);
+    vp->Value = value;
+}
+
+
 

@@ -203,5 +203,50 @@ void funccharListModify (charList *pList, int index, char value)
     vp->Value = value;
 }
 
+void funccharListRemove (charList *pList, int index)
+{
+    charNode *vp, *vpTemp;
+
+    
+    // the case that funcintNodePointerBefore do not handle
+    if ( index==pList->length )
+    {
+        printf ("the index is out the range !");
+        exit (1);
+    }
+
+
+
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        pList->H = pList->H->Next;
+
+        funccharNodeFree (vpTemp);
+    }
+    else
+    {
+        vp = funccharNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+
+        vp->Next = vp->Next->Next;
+        funccharNodeFree (vpTemp);
+    }
+
+
+
+    pList->length--;
+}
+
+void funccharListRemoveBegin (charList *pList)
+{
+    funccharListRemove (pList, 0);
+}
+
+void funccharListRemoveEnd (charList *pList)
+{
+    funccharListRemove (pList, pList->length-1);
+}
+
 
 

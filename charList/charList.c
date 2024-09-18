@@ -153,6 +153,26 @@ char funccharListat (charList List, int index)
     return vp->Value;
 }
 
+int funccharListIndex (charList List, char value)
+{
+    charNode *vpCn;
+    int viCn;
 
+    viCn = 0;
+    vpCn = List.H;
+    while ( vpCn!=NULL )
+    {
+        if ( vpCn->Value==value )
+        {
+            return viCn;
+        }
+        
+        viCn++;
+        vpCn = vpCn->Next;
+    }
+
+    printf ("the value was not found !");
+    exit (1);
+}
 
 

@@ -25,6 +25,23 @@ void funccharNodeInit (charNode *pNode)
     pNode->Next = NULL;
 }
 
+charNode* funccharNodeCreate (float value)
+{
+
+    charNode *vpNew = (charNode*) malloc(sizeof(charNode));
+    if ( vpNew == NULL )
+    {
+        printf ("the allocation has failled !\n");
+        exit (1);
+    }
+
+    funccharNodeInit (vpNew);
+    vpNew->Value = value;
+
+    return vpNew;
+}
+
+
 charNode* funccharNodePointer (charList List, int index)
 {
     if ( index<0 )
@@ -139,7 +156,7 @@ void funccharListInsert (charList *pList, int index, char value)
 
 void funccharListInsertBeging (charList *pList, char value)
 {
-    funcfloatListInsert (pList, 0, value);
+    funccharListInsert (pList, 0, value);
 }
 
 void funccharListInsertEnd (charList *pList, char value)

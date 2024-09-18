@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
 typedef struct charNode
 {
     char Value;
@@ -14,6 +16,8 @@ typedef struct charList
     charNode *H;
     int length;
 } charList;
+
+
 
 void funccharNodeInit (charNode *pNode)
 {
@@ -82,5 +86,25 @@ void funccharNodeFree (charNode *pNode)
     pNode->Next = NULL;
     pNode->Value = ' ';
     free (pNode);
+}
+
+
+
+void funccharListInit (charList *pList)
+{
+    pList->H = NULL;
+    pList->length = 0;
+}
+
+bool funccharListIsEmpty (charList List)
+{
+    if ( List.length==0 )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 

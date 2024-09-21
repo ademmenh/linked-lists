@@ -1,7 +1,21 @@
-#include <stdbool.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef charListisImported
+    #define charListisImported
+#endif
+
+#ifndef _STDBOOL_H
+    #include <stdbool.h>
+#endif
+
+#ifndef _STDIO_H
+    #include <stdio.h>
+#endif
+
+#ifndef _STDLIB_H
+    #include <stdlib.h>
+#endif
+
+
 
 
 

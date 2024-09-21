@@ -1,7 +1,19 @@
 
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef intListisImported
+    #define intListisImported
+#endif
+
+#ifndef _STDBOOL_H
+    #include <stdbool.h>
+#endif
+
+#ifndef _STDIO_H
+    #include <stdio.h>
+#endif
+
+#ifndef _STDLIB_H
+    #include <stdlib.h>
+#endif
 
 
 
@@ -398,37 +410,3 @@ void funcintListDisplay (intList List)
 
 }
 
-
-
-int main ()
-{
-
-    intList vlIntigers;
-    funcintListInit (&vlIntigers);
-
-    printf ("Creating List!\n");
-    funcintListCreateFIFO (&vlIntigers, 5);
-    printf ("\n\n");
-
-
-
-    printf ("Displaying the List:\n");
-    funcintListDisplay (vlIntigers);
-    printf ("\n\n");
-
-
-
-    printf ("Sorting:\n");
-    funcintListSortReversed (&vlIntigers);
-    printf ("\n\n");
-
-
-
-    printf ("Displaying the List after modifications:\n");
-    funcintListDisplay (vlIntigers);
-    printf ("\n\n");
-
-
-
-    return 0;
-}

@@ -1,8 +1,23 @@
 
-#include <stdbool.h>
+#ifndef floatListisImported
+    #define floatListisImported
+#endif
 
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef _STDBOOL_H
+    #include <stdbool.h>
+#endif
+
+#ifndef _STDIO_H
+    #include <stdio.h>
+#endif
+
+#ifndef _STDLIB_H
+    #include <stdlib.h>
+#endif
+
+
+
+
 
 typedef struct floatNode
 {

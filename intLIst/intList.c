@@ -1,6 +1,6 @@
 
-#ifndef intListisImported
-    #define intListisImported
+#ifndef _intLIST_C
+    #define _intLIST_C
 #endif
 
 #ifndef _STDBOOL_H

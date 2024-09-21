@@ -1,6 +1,6 @@
 
-#ifndef charListisImported
-    #define charListisImported
+#ifndef _charLIST_C
+    #define _charLIST_C
 #endif
 
 #ifndef _STDBOOL_H

@@ -190,5 +190,26 @@ string funcstringListat (stringList List, int index)
     return vp->Value;
 }
 
+int funcstringListIndex (stringList List, string value)
+{
+    stringNode *vpCn;
+    int viCn;
+
+    viCn = 0;
+    vpCn = List.H;
+    while ( vpCn!=NULL )
+    {
+        if ( funcstringCompare(vpCn->Value, value)==0 )
+        {
+            return viCn;
+        }
+        
+        viCn++;
+        vpCn = vpCn->Next;
+    }
+
+    printf ("the value is not found !");
+    exit (1);
+}
 
 

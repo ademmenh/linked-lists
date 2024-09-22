@@ -145,5 +145,32 @@ bool funcstringListIsEmpty (stringList List)
     }
 }
 
+void funcstringListInsert (stringList *pList, int index, string value)
+{
 
+    stringNode *vp, *vpTemp, *vpNew;
+
+
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        vpNew = funcstringNodeCreate(value);
+            
+        pList->H = vpNew;
+        vpNew->Next = vpTemp;
+    }
+    else
+    {
+        vp = funcstringNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+        vpNew = funcstringNodeCreate (value);
+
+        vp->Next = vpNew;
+        vpNew->Next = vpTemp;
+    }
+
+
+
+    pList->length++;
+}
 

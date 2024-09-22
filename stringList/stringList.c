@@ -212,4 +212,26 @@ int funcstringListIndex (stringList List, string value)
     exit (1);
 }
 
+int funcstringListCount (stringList List, string value)
+{
+    int viCn;
+    int viCount;
+    stringNode *vpCn;
+
+    viCn = 0;
+    vpCn = List.H;
+    viCount = 0;
+    for ( viCn=0; viCn<List.length; viCn++ )
+    {
+        if ( funcstringCompare(vpCn->Value, value)==0 )
+        {
+            viCount++;
+        }
+        
+        vpCn = vpCn->Next;
+    }
+    
+    return viCount;
+}
+
 

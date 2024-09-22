@@ -241,4 +241,50 @@ void funcstringListModify (stringList *pList, int index, string value)
 }
 
 
+void funcstringListRemove (stringList *pList, int index)
+{
+    stringNode *vp, *vpTemp;
+
+    
+    // the case that funcintNodePointerBefore do not handle
+    if ( index==pList->length )
+    {
+        printf ("the index is out the range !");
+        exit (1);
+    }
+
+
+
+    if ( index==0 )
+    {
+        vpTemp = pList->H;
+        pList->H = pList->H->Next;
+
+        funcstringNodeFree (vpTemp);
+    }
+    else
+    {
+        vp = funcstringNodePointerBefore (*pList, index);
+        vpTemp = vp->Next;
+
+        vp->Next = vp->Next->Next;
+        funcstringNodeFree (vpTemp);
+    }
+
+
+
+    pList->length--;
+}
+
+void funcstringListRemoveBegin (stringList *pList)
+{
+    funcstringListRemove (pList, 0);
+}
+
+void funcstringListRemoveEnd (stringList *pList)
+{
+    funcstringListRemove (pList, pList->length-1);
+}
+
+
 

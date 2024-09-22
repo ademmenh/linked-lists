@@ -43,7 +43,21 @@ void funcstringNodeInit (stringNode *pNode)
     pNode->Next = NULL;
 }
 
+stringNode* funcstringNodeCreate (string value)
+{
 
+    stringNode *vpNew = (stringNode*) malloc(sizeof(stringNode));
+    if ( vpNew == NULL )
+    {
+        printf ("the allocation has failled !\n");
+        exit (1);
+    }
+
+    funcstringNodeInit (vpNew);
+    vpNew->Value = value;
+
+    return vpNew;
+}
 
 void funcstringNodeFree (stringNode *pNode)
 {

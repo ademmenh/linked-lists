@@ -234,4 +234,11 @@ int funcstringListCount (stringList List, string value)
     return viCount;
 }
 
+void funcstringListModify (stringList *pList, int index, string value)
+{
+    stringNode *vp = funcstringNodePointer (*pList, index);
+    vp->Value = value;
+}
+
+
 

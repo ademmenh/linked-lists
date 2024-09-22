@@ -174,3 +174,14 @@ void funcstringListInsert (stringList *pList, int index, string value)
     pList->length++;
 }
 
+void funcstringListInsertBeging (stringList *pList, string value)
+{
+    funcstringListInsert (pList, 0, value);
+}
+
+void funcstringListInsertEnd (stringList *pList, string value)
+{
+    funcstirngListInsert (pList, pList->length, value);
+}
+
+

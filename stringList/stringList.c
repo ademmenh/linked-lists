@@ -25,7 +25,7 @@
 
 typedef struct stringNode
 {
-    int Value;
+    string Value;
     struct stringNode *Next;
 } stringNode;
 
@@ -35,5 +35,22 @@ typedef struct stringList
     int length;
 } stringList;
 
+
+
+void funcstringNodeInit (stringNode *pNode)
+{
+    funcstringInit (&(pNode->Value));
+    pNode->Next = NULL;
+}
+
+
+
+void funcstringNodeFree (stringNode *pNode)
+{
+    funcstringDListClear (&(pNode->Value));
+    pNode->Next = NULL;
+    
+    free (pNode);
+}
 
 

@@ -184,4 +184,11 @@ void funcstringListInsertEnd (stringList *pList, string value)
     funcstirngListInsert (pList, pList->length, value);
 }
 
+string funcstringListat (stringList List, int index)
+{
+    stringNode *vp = funcstringNodePointer(List, index);
+    return vp->Value;
+}
+
+
 

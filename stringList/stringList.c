@@ -126,3 +126,24 @@ void funcstringNodeFree (stringNode *pNode)
 }
 
 
+
+void funcstringListInit (stringList *pList)
+{
+    pList->H = NULL;
+    pList->length = 0;
+}
+
+bool funcstringListIsEmpty (stringList List)
+{
+    if ( List.length==0 )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+

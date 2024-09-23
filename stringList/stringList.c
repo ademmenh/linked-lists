@@ -286,5 +286,13 @@ void funcstringListRemoveEnd (stringList *pList)
     funcstringListRemove (pList, pList->length-1);
 }
 
+void funcstringListClear (stringList *pList)
+{
+    while (pList->length>0)
+    {
+        funcstringListRemove (pList, 0);
+    }
+}
+
 
 

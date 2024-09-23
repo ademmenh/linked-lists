@@ -119,7 +119,7 @@ stringNode* funcstringNodePointerBefore (stringList List, int index)
 
 void funcstringNodeFree (stringNode *pNode)
 {
-    funcstringDListClear (&(pNode->Value));
+    funcstringClear (&(pNode->Value));
     pNode->Next = NULL;
     
     free (pNode);
@@ -295,16 +295,53 @@ void funcstringListClear (stringList *pList)
 }
 
 
+void funcstringInput_ (string *pString)
+{
+
+    char Buffer [STRING_MAX_LENGTH];
+    int viBufferSize;
+    char vcClearBuffer;
+
+    int viCn;
+
+
+
+
+
+    // printf ("Enter the String: ");
+    fgets (Buffer, STRING_MAX_LENGTH, stdin);
+
+
+
+    viBufferSize = strlen (Buffer);
+    if ( Buffer[viBufferSize-1] != '\n' )
+    {
+        do
+        {
+            vcClearBuffer = getchar();
+        } while ( vcClearBuffer!='\n' );
+    }
+
+    for ( viCn=0; viCn<viBufferSize; viCn++ )   // viBufferSize won't reach the '\0'
+    {
+        if ( Buffer[viCn]=='\n' )               // in case of the size is less than STRING_MAX_LENGTH
+        {
+            break;
+        }
+        funcstringInsertEnd (pString, Buffer[viCn]);
+    }
+}
+
 void funcstringListCreateFIFO (stringList *pList, int Listsize)
 {
     int viCn;
     string vsInput;
-    funcstringInit (&vsInput);
     
     for ( viCn=0; viCn<Listsize; viCn++ )
     {
-        // printf ("the current size is: %d.\n", pList->length);
-        funcstringInput (&vsInput);
+        funcstringInit (&vsInput);
+        printf ("Enter the value %d:", viCn);
+        funcstringInput_ (&vsInput);
         funcstringListInsertEnd (pList, vsInput);
     }
 }
@@ -347,3 +384,51 @@ void funcstringListDisplay (stringList List)
     }
 
 }
+
+
+// int main ()
+// {
+
+    // stringList vlStrings;
+    // funcstringListInit (&vlStrings);
+
+    // printf ("Enter your strings:\n");
+    // funcstringListCreateFIFO (&vlStrings, 5);
+    // printf ("\n\n");
+
+
+
+    // printf ("Displaying the list:\n");
+    // funcstringListDisplay (vlStrings);
+    // printf ("\n\n");
+
+
+    // printf ("inserting in list:\n");
+    // string vsString0, vsString1, vsString10;
+    // funcstringInit(&vsString0);
+    // funcstringInit(&vsString1);
+    // funcstringInit(&vsString10);
+    // funcstringListInsert (&vlStrings, 0, vsString0);
+    // funcstringListInsert (&vlStrings, 1, vsString1);
+    // funcstringListInsert (&vlStrings, vlStrings.length, vsString10);
+    // printf ("\n\n");
+
+
+
+    // printf ("Displaying the list:\n");
+    // funcstringListDisplay (vlStrings);
+    // printf ("\n\n");
+
+
+
+    // printf ("Displaying count: \n");
+    // string vsString0;
+    // funcstringInit(&vsString0);
+    // funcstringAssign (&vsString0, "blabla");
+    // int viCount = funcstringListIndex (vlStrings, vsString0);
+    // printf ("%d", viCount);
+    // printf ("\n\n");
+
+
+//     return 0;
+// }

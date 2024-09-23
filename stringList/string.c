@@ -527,7 +527,7 @@ void funcstringRemoveEnd (string *pString)
 */
 
 
-void funcstringDListClear (string *pString)
+void funcstringClear (string *pString)
 {
 
     while ( (*pString).length>0 )
@@ -773,6 +773,20 @@ void funcstringCopy (string *pString1, string String2)
 
 const int STRING_MAX_LENGTH = 101; // 100+1
 
+void funcstringAssign (string *pString, char string [STRING_MAX_LENGTH])
+{
+    int viCn;
+    int vistringSize = strlen (string);
+    for ( viCn=0; viCn<vistringSize && viCn<STRING_MAX_LENGTH; viCn++ ) 
+    {
+        if ( string[viCn]=='\0' )
+        {
+            break;
+        }
+        funcstringInsertEnd (pString, string[viCn]);
+    }
+}
+
 void funcstringInput (string *pString)
 {
 
@@ -854,9 +868,8 @@ void funcstringDisplayReversed (string String)
 
 // int main ()
 // {
-//     string vsString1;
+    // string vsString1;
 //     string vsString2;
-
 //     funcstringInit (&vsString1);
 //     funcstringInit (&vsString2);
 

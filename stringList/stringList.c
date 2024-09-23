@@ -181,7 +181,7 @@ void funcstringListInsertBeging (stringList *pList, string value)
 
 void funcstringListInsertEnd (stringList *pList, string value)
 {
-    funcstirngListInsert (pList, pList->length, value);
+    funcstringListInsert (pList, pList->length, value);
 }
 
 string funcstringListat (stringList List, int index)
@@ -305,7 +305,7 @@ void funcstringListCreateFIFO (stringList *pList, int Listsize)
     {
         // printf ("the current size is: %d.\n", pList->length);
         funcstringInput (&vsInput);
-        funcintListInsertEnd (pList, vsInput);
+        funcstringListInsertEnd (pList, vsInput);
     }
 }
 
@@ -322,4 +322,28 @@ void funcstringListCreateLIFO (stringList *pList, int Listsize)
     }
 }
 
+void funcstringListDisplay (stringList List)
+{
+    stringNode *vpCn;
+    int viCn;
 
+
+    if ( List.length==0 )
+    {
+        printf ("The List is Empty!");
+        return;
+    }
+
+
+    vpCn = List.H;
+    viCn = 0;
+    while ( vpCn!=NULL && viCn<List.length )
+    {
+        printf ("The value %d is: ", viCn);
+        funcstringDisplay (vpCn->Value);
+        printf ("\n");
+        viCn++;
+        vpCn = vpCn->Next;
+    }
+
+}

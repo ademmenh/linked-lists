@@ -295,4 +295,31 @@ void funcstringListClear (stringList *pList)
 }
 
 
+void funcstringListCreateFIFO (stringList *pList, int Listsize)
+{
+    int viCn;
+    string vsInput;
+    funcstringInit (&vsInput);
+    
+    for ( viCn=0; viCn<Listsize; viCn++ )
+    {
+        // printf ("the current size is: %d.\n", pList->length);
+        funcstringInput (&vsInput);
+        funcintListInsertEnd (pList, vsInput);
+    }
+}
+
+void funcstringListCreateLIFO (stringList *pList, int Listsize)
+{
+    string vsInput;
+    int viCn;
+
+    for ( viCn=0; viCn<Listsize; viCn++ )
+    {
+        // printf ("the current size is: %d.\n", pList->length);
+        funcstringInput(&vsInput);
+        funcstringListInsertBeging (pList, vsInput);
+    }
+}
+
 

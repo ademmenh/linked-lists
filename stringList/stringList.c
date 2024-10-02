@@ -1,7 +1,5 @@
 
-#ifndef _stringLIST_C
-    #define _stringLIST_C
-#endif
+#define _stringLIST_C
 
 #ifndef _STDBOOL_H
     #include <stdbool.h>
@@ -384,51 +382,3 @@ void funcstringListDisplay (stringList List)
     }
 
 }
-
-
-// int main ()
-// {
-
-    // stringList vlStrings;
-    // funcstringListInit (&vlStrings);
-
-    // printf ("Enter your strings:\n");
-    // funcstringListCreateFIFO (&vlStrings, 5);
-    // printf ("\n\n");
-
-
-
-    // printf ("Displaying the list:\n");
-    // funcstringListDisplay (vlStrings);
-    // printf ("\n\n");
-
-
-    // printf ("inserting in list:\n");
-    // string vsString0, vsString1, vsString10;
-    // funcstringInit(&vsString0);
-    // funcstringInit(&vsString1);
-    // funcstringInit(&vsString10);
-    // funcstringListInsert (&vlStrings, 0, vsString0);
-    // funcstringListInsert (&vlStrings, 1, vsString1);
-    // funcstringListInsert (&vlStrings, vlStrings.length, vsString10);
-    // printf ("\n\n");
-
-
-
-    // printf ("Displaying the list:\n");
-    // funcstringListDisplay (vlStrings);
-    // printf ("\n\n");
-
-
-
-    // printf ("Displaying count: \n");
-    // string vsString0;
-    // funcstringInit(&vsString0);
-    // funcstringAssign (&vsString0, "blabla");
-    // int viCount = funcstringListIndex (vlStrings, vsString0);
-    // printf ("%d", viCount);
-    // printf ("\n\n");
-
-
-//     return 0;
-// }

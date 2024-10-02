@@ -287,15 +287,16 @@ void funccharListClear (charList *pList)
 }
 
 
-
-char funccharInput ()
-{
-    char vcInput;
-    printf ("Enter your value: ");
-    scanf ("%c", &vcInput);
+#ifndef _func_CHARINPUT
+    char funccharInput ()
+    {
+        char vcInput;
+        printf ("Enter your value: ");
+        scanf ("%c", &vcInput);
     
-    return vcInput;
-}
+        return vcInput;
+    }
+#endif
 
 void funccharListCreateFIFO (charList *pList, int Listsize)
 {

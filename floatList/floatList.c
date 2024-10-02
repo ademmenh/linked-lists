@@ -286,15 +286,16 @@ void funcfloatListClear (floatList *pList)
 }
 
 
-
-float funcfloatInput ()
-{
-    float vfInput;
-    printf ("Enter your value: ");
-    scanf ("%f", &vfInput);
+#ifndef _func_FLOATINPUT
+    float funcfloatInput ()
+    {
+        float vfInput;
+        printf ("Enter your value: ");
+        scanf ("%f", &vfInput);
     
-    return vfInput;
-}
+        return vfInput;
+    }
+#endif
 
 void funcfloatListCreateFIFO (floatList *pList, int Listsize)
 {
